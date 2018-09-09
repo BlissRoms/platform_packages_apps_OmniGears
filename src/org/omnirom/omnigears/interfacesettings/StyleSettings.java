@@ -20,8 +20,6 @@ package org.omnirom.omnigears.interfacesettings;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.preference.ListPreference;
@@ -48,9 +46,6 @@ import java.util.Map;
 public class StyleSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "StyleSettings";
-    private static final String CUSTOM_WALL_BROWSE = "custom_wall_browse";
-
-    private Preference mWallBrowse;
 
     @Override
     public void onResume() {
@@ -66,9 +61,6 @@ public class StyleSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.style_settings);
-
-        mWallBrowse = findPreference(CUSTOM_WALL_BROWSE);
-        mWallBrowse.setEnabled(isBrowseWallsAvailable());
     }
 
     @Override
@@ -79,13 +71,6 @@ public class StyleSettings extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         return true;
-    }
-
-    private boolean isBrowseWallsAvailable() {
-        PackageManager pm = getPackageManager();
-        Intent browse = new Intent();
-        browse.setClassName("org.omnirom.omnistyle", "org.omnirom.omnistyle.BrowseWallsActivity");
-        return pm.resolveActivity(browse, 0) != null;
     }
 
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =

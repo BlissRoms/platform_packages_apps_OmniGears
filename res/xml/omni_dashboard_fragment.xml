@@ -21,7 +21,6 @@
     <Preference
         android:key="style_settings"
         android:title="@string/style_settings_title"
-        android:summary="@string/style_settings_summary"
         android:icon="@drawable/ic_settings_style"
         android:fragment="org.omnirom.omnigears.interfacesettings.StyleSettings" />
 
