@@ -819,4 +819,9 @@
     <string name="lockscreen_visualizer_enable_custom_summary">Use a preset color instead of the generated color</string>
     <string name="lockscreen_visualizer_custom_color">Visualizer Color</string>
 
+    <!-- StatusBar -->
+    <string name="statusbar_settings_category">Status Bar</string>
+    <string name="use_old_mobiletype_title">Use old mobile type style</string>
+    <string name="use_old_mobiletype_summary">Merge signal and type icons</string>
+
 </resources>
