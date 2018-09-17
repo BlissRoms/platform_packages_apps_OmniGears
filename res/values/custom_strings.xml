@@ -811,4 +811,8 @@
     <string name="style_settings_summary">Customize the look and feel</string>
     <string name="custom_bars_settings_title">Bars</string>
 
+    <!-- Lock screen visualizer -->
+    <string name="lockscreen_visualizer_title">Music visualizer</string>
+    <string name="lockscreen_visualizer_summary">Show visualizer on lockscreen when music is playing</string>
+
 </resources>
