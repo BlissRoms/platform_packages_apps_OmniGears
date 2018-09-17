@@ -17,18 +17,23 @@
 */
 package org.omnirom.omnigears.interfacesettings;
 import android.os.Bundle;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceScreen;
 import android.provider.SearchIndexableResource;
+import android.provider.Settings;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
-import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+
+import org.omnirom.omnilib.preference.ColorSelectPreference;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -37,6 +42,9 @@ public class LockscreenItemSettings extends SettingsPreferenceFragment implement
         Preference.OnPreferenceChangeListener, Indexable {
 
     private static final String TAG = "LockscreenItemSettings";
+    private static final String LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR = "lock_screen_visualizer_custom_color";
+
+    private ColorSelectPreference mVisualizerColor;
 
     @Override
     public int getMetricsCategory() {
@@ -47,6 +55,17 @@ public class LockscreenItemSettings extends SettingsPreferenceFragment implement
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.lockscreenitems);
+        ContentResolver resolver = getActivity().getContentResolver();
+
+        // Visualizer custom color
+        mVisualizerColor = (ColorSelectPreference) findPreference(LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR);
+        int visColor = Settings.System.getInt(resolver,
+                Settings.System.LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR, 0xff1976D2);
+        String hexColor = String.format("#%08X", visColor);
+        mVisualizerColor.setSummary(visColorHex);
+        mVisualizerColor.setNewPreviewColor(visColor);
+        mVisualizerColor.setAlphaSliderEnabled(true);
+        mVisualizerColor.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -56,7 +75,15 @@ public class LockscreenItemSettings extends SettingsPreferenceFragment implement
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        return true;
+         ContentResolver resolver = getActivity().getContentResolver();
+         if (preference == mVisualizerColor) {
+            String hexColor = String.format("#%08X", mVisualizerColor.getColor());
+            Settings.System.putInt(resolver,
+                    Settings.System.LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR, mVisualizerColor.getColor());
+            mVisualizerColor.setSummary(hexColor);
+            return true;
+        }
+        return false;
     }
 
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
