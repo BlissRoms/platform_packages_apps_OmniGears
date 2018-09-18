@@ -181,8 +181,7 @@
     <string name="statusbar_battery_summary">Set style of status bar battery display</string>
     <string name="clock_title">Clock and Date</string>
     <string name="statusbar_clock_summary">Set style of status bar clock display</string>
-    <string name="battery_style_title">Style</string>
-    <string name="statusbar_percent_inside_title">Percent overlay</string>
+     <string name="statusbar_percent_inside_title">Percent overlay</string>
     <string name="statusbar_percent_inside_summary">Display battery percentage on top of the the battery image</string>
     <string name="statusbar_charging_image_title">Charging indicator</string>
     <string name="statusbar_category_charging_title">Charging</string>
@@ -648,6 +647,13 @@
     <string name="battery_style_square">Square</string>
     <string name="battery_style_dotted_square">Dotted square</string>
     <string name="battery_style_text">Text</string>
+    <string name="show_battery_percent_title">Show percentage</string>
+    <string name="battery_percent_none">Don\'t show</string>
+    <string name="battery_percent_outside">Show near icon</string>
+    <string name="battery_percent_inside">Show inside icon</string>
+
+    <string name="battery_percent_always">Always</string>
+    <string name="battery_percent_expanded">Only when expanded</string>
 
     <string name="status_bar_clock">Clock &amp; Date</string>
     <string name="clock_title_enable">Alignment</string>

@@ -55,12 +55,14 @@ public class BarsSettings extends SettingsPreferenceFragment implements
     private static final String KEY_ASPECT_RATIO_APPS_LIST_SCROLLER = "aspect_ratio_apps_list_scroller";
     private static final String KEY_QS_PANEL_ALPHA = "qs_panel_alpha";
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
+    private static final String BATTERY_PERCENT = "show_battery_percent";
 
     private AppMultiSelectListPreference mAspectRatioAppsSelect;
     private ScrollAppsViewPreference mAspectRatioApps;
     private SeekBarPreference mQsPanelAlpha;
 
     private ListPreference mStatusBarBattery;
+    private ListPreference mBatteryPercentage;
 
     @Override
     public int getMetricsCategory() {
@@ -87,6 +89,16 @@ public class BarsSettings extends SettingsPreferenceFragment implements
         mStatusBarBattery.setValue(String.valueOf(batteryStyle));
         mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
         mStatusBarBattery.setOnPreferenceChangeListener(this);
+
+        mBatteryPercentage = (ListPreference) findPreference(BATTERY_PERCENT);
+        int showPercent = Settings.System.getInt(getContentResolver(),
+                Settings.System.SHOW_BATTERY_PERCENT, 1);
+        mBatteryPercentage.setValue(Integer.toString(showPercent));
+        int valueIndex = mBatteryPercentage.findIndexOfValue(String.valueOf(showPercent));
+        mBatteryPercentage.setSummary(mBatteryPercentage.getEntries()[valueIndex]);
+        mBatteryPercentage.setOnPreferenceChangeListener(this);
+        boolean hideForcePercentage = batteryStyle == 8; /*text*/
+        mBatteryPercentage.setEnabled(!hideForcePercentage);
 
         final PreferenceCategory aspectRatioCategory =
                 (PreferenceCategory) getPreferenceScreen().findPreference(KEY_ASPECT_RATIO_CATEGORY);
@@ -141,6 +153,13 @@ public class BarsSettings extends SettingsPreferenceFragment implements
             Settings.Secure.putInt(getActivity().getContentResolver(),
                     Settings.Secure.STATUS_BAR_BATTERY_STYLE, clockStyle);
             mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
+            return true;
+        } else  if (preference == mBatteryPercentage) {
+            int showPercent = Integer.valueOf((String) newValue);
+            int index = mBatteryPercentage.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.SHOW_BATTERY_PERCENT, showPercent);
+            mBatteryPercentage.setSummary(mBatteryPercentage.getEntries()[index]);
             return true;
         }
         return false;

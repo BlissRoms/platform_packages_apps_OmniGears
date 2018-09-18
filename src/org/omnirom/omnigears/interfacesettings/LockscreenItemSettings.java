@@ -62,9 +62,7 @@ public class LockscreenItemSettings extends SettingsPreferenceFragment implement
         int visColor = Settings.System.getInt(resolver,
                 Settings.System.LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR, 0xff1976D2);
         String hexColor = String.format("#%08X", visColor);
-        mVisualizerColor.setSummary(visColorHex);
-        mVisualizerColor.setNewPreviewColor(visColor);
-        mVisualizerColor.setAlphaSliderEnabled(true);
+        mVisualizerColor.setSummary(hexColor);
         mVisualizerColor.setOnPreferenceChangeListener(this);
     }
 
