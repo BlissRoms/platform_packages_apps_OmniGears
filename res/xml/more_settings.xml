@@ -44,6 +44,19 @@
 
         </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="calling_options"
+        android:title="@string/calls_category">
+
+        <!-- Flashlight on incoming calls -->
+        <ListPreference
+            android:key="flashlight_on_call"
+            android:icon="@drawable/ic_power_flashlight"
+            android:title="@string/flashlight_on_call_title"
+            android:entries="@array/flashlight_on_call_entries"
+            android:entryValues="@array/flashlight_on_call_values"
+            android:defaultValue="0" />
+
         <PreferenceCategory
             android:key="category_other"
             android:title="@string/other_category">

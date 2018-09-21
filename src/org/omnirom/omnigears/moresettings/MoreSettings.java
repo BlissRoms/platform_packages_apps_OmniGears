@@ -49,8 +49,10 @@ public class MoreSettings extends SettingsPreferenceFragment implements OnPrefer
     private static final String TAG = "MoreSettings";
     private static final String KEY_SHOW_DASHBOARD_COLUMNS = "show_dashboard_columns";
     private static final String KEY_HIDE_DASHBOARD_SUMMARY = "hide_dashboard_summary";
+    private static final String PREF_FLASHLIGHT_ON_CALL = "flashlight_on_call";
 
     private SharedPreferences mAppPreferences;
+    private ListPreference mFlashOnCall;
 
     @Override
     public int getMetricsCategory() {
@@ -61,6 +63,14 @@ public class MoreSettings extends SettingsPreferenceFragment implements OnPrefer
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.more_settings);
+        ContentResolver resolver = getActivity().getContentResolver();
+
+        mFlashOnCall = (ListPreference) findPreference(PREF_FLASHLIGHT_ON_CALL);
+        mFlashOnCall.setOnPreferenceChangeListener(this);
+        mFlashOnCall.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.FLASHLIGHT_ON_CALL,
+                0)));
+        mFlashOnCall.setSummary(mFlashOnCall.getEntry());
 
         mAppPreferences = getActivity().getSharedPreferences(SettingsActivity.APP_PREFERENCES_NAME,
                 Context.MODE_PRIVATE);
@@ -90,6 +100,14 @@ public class MoreSettings extends SettingsPreferenceFragment implements OnPrefer
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mFlashOnCall) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mFlashOnCall.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.FLASHLIGHT_ON_CALL, val);
+            mFlashOnCall.setSummary(mFlashOnCall.getEntries()[index]);
+            return true;
+        }
         return false;
     }
 
