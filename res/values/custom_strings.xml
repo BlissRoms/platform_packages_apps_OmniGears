@@ -204,6 +204,7 @@
     <string name="button_manual_brightness">Brightness level</string>
     <string name="unit_sec">sec</string>
     <string name="unit_msec">ms</string>
+    <string name="unit_x1000ms">x1000 ms</string>
     <string name="button_backlight_enable_title">Enable</string>
 
     <string name="navigation_bar_show_title">Show navigation bar</string>
@@ -823,5 +824,12 @@
     <string name="statusbar_settings_category">Status Bar</string>
     <string name="use_old_mobiletype_title">Use old mobile type style</string>
     <string name="use_old_mobiletype_summary">Merge signal and type icons</string>
+
+    <!-- Burn-in Protection -->
+    <string name="navigation_burnin_category">Burn-in Protection</string>
+    <string name="burn_in_protection_title">Enable</string>
+    <string name="burn_in_protection_summary">Shift navabr and statusbar icons to prevent burn-in</string>
+    <string name="burn_in_protection_interval_title">Interval of shift</string>
+    <string name="burn_in_protection_interval_summary">How often to make icons shift</string>
 
 </resources>
