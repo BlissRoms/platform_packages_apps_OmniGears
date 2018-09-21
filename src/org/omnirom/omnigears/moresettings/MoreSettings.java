@@ -18,6 +18,7 @@
 
 package org.omnirom.omnigears.moresettings;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
