@@ -60,6 +60,16 @@
         android:icon="@drawable/ic_settings_leds"
         android:fragment="org.omnirom.omnigears.batterylight.BatteryLightSettings" />
 
+        <!-- AppOps -->
+        <Preference
+            android:key="app_ops_settings"
+            android:title="@string/app_ops_settings_title"
+            android:layout="@layout/preference_appops">
+            <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.settings"
+                android:targetClass="com.android.settings.applications.appops.AppOpsSummary" />
+        </Preference>
+
     <Preference
         android:key="omnijaws_settings"
         android:icon="@drawable/ic_qs_weather_default_on"
