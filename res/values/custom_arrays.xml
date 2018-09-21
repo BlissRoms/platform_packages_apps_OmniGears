@@ -500,8 +500,8 @@
         <item>@string/battery_style_dotted_circle</item>
         <item>@string/battery_style_big_circle</item>
         <item>@string/battery_style_big_dotted_circle</item>
-        <item>@string/battery_style_square</item>
-        <item>@string/battery_style_dotted_square</item>
+        <!--<item>@string/battery_style_square</item>
+        <item>@string/battery_style_dotted_square</item> -->
         <item>@string/battery_style_text</item>
     </string-array>
 
@@ -511,8 +511,8 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
-        <item>6</item>
-        <item>7</item>
+        <!--<item>6</item>
+        <item>7</item> -->
         <item>8</item>
     </string-array>
 
