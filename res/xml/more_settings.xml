@@ -17,7 +17,6 @@
 
 <PreferenceScreen 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:key="more_settings"
     android:title="@string/more_settings_title">
 
@@ -26,19 +25,25 @@
         android:title="@string/calls_category">
 
          <org.omnirom.omnilib.preference.SystemSettingSwitchPreference
-                android:key="vibrate_on_connect"
-                android:title="@string/incall_vibrate_connect_title"
-                android:defaultValue="false" />
+            android:key="vibrate_on_connect"
+            android:title="@string/incall_vibrate_connect_title"
+            android:defaultValue="false" />
 
          <org.omnirom.omnilib.preference.SystemSettingSwitchPreference
-                android:key="vibrate_on_callwaiting"
-                android:title="@string/incall_vibrate_call_wait_title"
-                android:defaultValue="false" />
+            android:key="vibrate_on_callwaiting"
+            android:title="@string/incall_vibrate_call_wait_title"
+            android:defaultValue="false" />
 
          <org.omnirom.omnilib.preference.SystemSettingSwitchPreference
-                android:key="vibrate_on_disconnect"
-                android:title="@string/incall_vibrate_disconnect_title"
-                android:defaultValue="false" />
+            android:key="vibrate_on_disconnect"
+            android:title="@string/incall_vibrate_disconnect_title"
+            android:defaultValue="false" />
+
+         <org.omnirom.omnilib.preference.SystemSettingSwitchPreference
+            android:key="incall_notifications_vibrate"
+            android:title="@string/incall_notifications_vibrate"
+            android:summary="@string/incall_notifications_vibrate_summary"
+            android:defaultValue="false" />
 
         <!-- Flashlight on incoming calls -->
         <ListPreference
