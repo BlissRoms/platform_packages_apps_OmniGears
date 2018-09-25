@@ -43,6 +43,12 @@
         android:dialogTitle="@string/lockscreen_visualizer_custom_color" />
 
     <org.omnirom.omnilib.preference.SystemSettingSwitchPreference
+        android:key="lockscreen_battery_info"
+        android:title="@string/lockscreen_battery_info_title"
+        android:summary="@string/lockscreen_battery_info_summary"
+        android:defaultValue="true" />
+
+    <org.omnirom.omnilib.preference.SystemSettingSwitchPreference
         android:key="lockscreen_weather_enabled"
         android:title="@string/lockscreen_weather_title"
         android:summary="@string/lockscreen_weather_summary"
