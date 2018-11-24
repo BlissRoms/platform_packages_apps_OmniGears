@@ -65,12 +65,6 @@
             android:summary="@string/global_actions_advanced_reboot_summary_new"
             android:defaultValue="false" />
 
-        <org.omnirom.omnilib.preference.SystemSettingSwitchPreference
-            android:key="system_proxi_check_enabled"
-            android:title="@string/system_proxi_check_enabled_title"
-            android:summary="@string/system_proxi_check_enabled_summary"
-            android:defaultValue="false"/>
-
     </PreferenceCategory>
 
     <PreferenceCategory

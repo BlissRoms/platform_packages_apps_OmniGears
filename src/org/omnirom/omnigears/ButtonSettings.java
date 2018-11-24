@@ -59,7 +59,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
     private static final String CATEGORY_POWER = "button_power";
     private static final String KEYS_SHOW_NAVBAR_KEY = "navigation_bar_show";
     private static final String NAVIGATION_BAR_RECENTS_STYLE = "navbar_recents_style";
-    private static final String SYSTEM_PROXI_CHECK_ENABLED = "system_proxi_check_enabled";
 
     private ListPreference mNavbarRecentsStyle;
     private SwitchPreference mEnableNavBar;
@@ -99,11 +98,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
         mNavbarRecentsStyle.setSummary(mNavbarRecentsStyle.getEntry());
         mNavbarRecentsStyle.setOnPreferenceChangeListener(this);
 
-        boolean supportPowerButtonProxyCheck = getResources().getBoolean(com.android.internal.R.bool.config_proxiSensorWakupCheck);
-        SwitchPreference proxyCheckPreference = (SwitchPreference) findPreference(SYSTEM_PROXI_CHECK_ENABLED);
-        if (!DeviceUtils.deviceSupportsProximitySensor(getActivity()) || !supportPowerButtonProxyCheck) {
-            powerCategory.removePreference(proxyCheckPreference);
-        }
     }
 
     @Override
